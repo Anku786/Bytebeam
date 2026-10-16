@@ -1,23 +1,101 @@
+/* =========================================
+   THEME VARIABLES
+   ========================================= */
+
 :root {
+  /* Dark theme - existing Bytebeam look */
   --bg: #070d1b;
+
   --panel: #111a2a;
   --panel2: #151f30;
   --panel3: #0d1524;
+
   --line: #243148;
   --line2: #1b2639;
+
   --text: #f5f7fb;
+  --text-secondary: #aab4c5;
+
   --muted: #7f8ba3;
   --muted2: #aab4c5;
+
   --blue: #246bff;
   --blue2: #1554d1;
+
   --green: #18b76a;
   --green2: #22d57d;
+
   --red: #ef4444;
   --red2: #ff5b61;
+
   --amber: #f59e0b;
   --purple: #8b5cf6;
   --cyan: #38bdf8;
+
+  --border: #243148;
+  --border-light: #1b2639;
+
+  --surface: #0d1524;
+  --surface-hover: #151f30;
+
+  --input-bg: #0e1727;
+  --input-border: #1b2940;
+
+  --table-header: #0a1220;
+  --table-row-hover: #111d2e;
+
+  --shadow: rgba(0, 0, 0, 0.25);
+
   --radius: 8px;
+}
+
+
+/* =========================================
+   LIGHT THEME
+   ========================================= */
+
+html.light {
+  --bg: #f5f7fb;
+
+  --panel: #ffffff;
+  --panel2: #f8fafc;
+  --panel3: #eef2f7;
+
+  --line: #d9e0ea;
+  --line2: #e5eaf1;
+
+  --text: #172033;
+  --text-secondary: #4b5870;
+
+  --muted: #68758a;
+  --muted2: #7c8799;
+
+  --blue: #246bff;
+  --blue2: #1554d1;
+
+  --green: #159d68;
+  --green2: #18b76a;
+
+  --red: #dc3f48;
+  --red2: #ef4444;
+
+  --amber: #d88908;
+  --purple: #7c3aed;
+  --cyan: #0284c7;
+
+  --border: #d9e0ea;
+  --border-light: #e5eaf1;
+
+  --surface: #f8fafc;
+  --surface-hover: #eef3f8;
+
+  --input-bg: #ffffff;
+  --input-border: #cfd7e3;
+
+  --table-header: #f1f4f8;
+  --table-row-hover: #f5f8fc;
+
+  --shadow: rgba(15, 23, 42, 0.08);
 }
 
 * {
@@ -29,9 +107,28 @@ body,
 #root {
   margin: 0;
   min-height: 100%;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
   background: var(--bg);
   color: var(--text);
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+body {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 a {
@@ -57,16 +154,71 @@ button {
   min-height: 100vh;
   display: flex;
   background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 .sidebar {
   width: 205px;
   flex: 0 0 205px;
-  border-right: 1px solid #162135;
-  background: #0b1220;
+
+  border-right: 1px solid var(--border);
+  background: var(--panel3);
+
   padding: 18px 10px 12px;
+
   display: flex;
   flex-direction: column;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+/* =========================================
+   THEME TOGGLE
+   ========================================= */
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 7px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 150ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--blue);
+}
+
+.theme-toggle:active {
+  transform: scale(0.94);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
 
@@ -127,17 +279,17 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #bac4d6;
+  color: var(--text-secondary);
   font-size: 11px;
   cursor: pointer;
 }
 
 .nav-item:hover {
-  background: #121d30;
+  background: var(--surface-hover);
 }
 
 .nav-item.active {
-  background: #1f68f6;
+  background: var(--blue);
   color: white;
   border-color: #3478ff;
   box-shadow: 0 5px 18px rgba(31, 104, 246, 0.18);
@@ -191,37 +343,58 @@ button {
 
 .topbar {
   height: 54px;
-  border-bottom: 1px solid #162135;
+
+  border-bottom: 1px solid var(--border);
+
   display: flex;
   align-items: center;
+
   gap: 18px;
   padding: 0 18px;
+
+  background: var(--bg);
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
 }
 
 .search {
   width: 365px;
   height: 30px;
-  border: 1px solid #1b2940;
-  background: #0e1727;
+
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+
   border-radius: 7px;
+
   display: flex;
   align-items: center;
+
   gap: 8px;
   padding: 0 12px;
-  color: #65738b;
+
+  color: var(--muted);
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
 }
 
 .search input {
   border: 0;
   outline: 0;
+
   background: transparent;
-  color: white;
+  color: var(--text);
+
   width: 100%;
   font-size: 10px;
 }
 
 .search input::placeholder {
-  color: #68758a;
+  color: var(--muted);
 }
 
 .top-actions {
@@ -359,14 +532,25 @@ p {
   gap: 8px;
 }
 
+.date,
+.download {
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-secondary);
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
 .date {
   height: 33px;
-  border: 1px solid #1d2a40;
-  background: #0f1828;
   border-radius: 7px;
   padding: 0 11px;
-  color: #c5cede;
+
   font-size: 9px;
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -375,10 +559,7 @@ p {
 .download {
   width: 35px;
   height: 33px;
-  border: 1px solid #1d2a40;
-  background: #0f1828;
   border-radius: 7px;
-  color: #c5cede;
 }
 
 .kpis {
@@ -389,8 +570,13 @@ p {
 
 .card {
   background: var(--panel);
-  border: 1px solid #202c40;
+  border: 1px solid var(--border);
   border-radius: 7px;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .kpi {
@@ -403,7 +589,7 @@ p {
 .kpi-title {
   font-size: 11px;
   font-weight: 650;
-  color: #e7ebf3;
+  color: var(--text);
 }
 
 .kpi-value {
@@ -415,7 +601,7 @@ p {
 
 .kpi-sub {
   font-size: 8px;
-  color: #8995a9;
+  color: var(--muted);
   margin-top: 2px;
 }
 
@@ -516,7 +702,7 @@ p {
 
 .panel {
   background: var(--panel);
-  border: 1px solid #1c293d;
+  border: 1px solid var(--border);
   border-radius: 7px;
   padding: 14px 15px;
   min-width: 0;
@@ -770,25 +956,32 @@ table {
 
 th {
   height: 37px;
-  background: #0a1220;
-  color: #8995aa;
+
+  background: var(--table-header);
+  color: var(--muted);
+
   text-align: left;
   font-weight: 700;
   font-size: 8px;
+
   padding: 0 10px;
-  border-bottom: 1px solid #202c40;
+
+  border-bottom: 1px solid var(--border);
 }
 
 td {
   height: 51px;
+
   padding: 0 10px;
-  border-bottom: 1px solid #1b2638;
+
+  border-bottom: 1px solid var(--line2);
+
   font-size: 9px;
-  color: #b6c0d0;
+  color: var(--text-secondary);
 }
 
 tbody tr:hover {
-  background: #111d2e;
+  background: var(--table-row-hover);
 }
 
 tbody tr.clickable {
@@ -825,12 +1018,12 @@ tbody tr.critical-row {
 
 .vehicle {
   font-weight: 700;
-  color: #d8dfeb;
+  color: var(--text);
 }
 
 .vehicle small {
   display: block;
-  color: #68758a;
+  color: var(--muted);
   font-size: 7px;
   margin-top: 2px;
   font-weight: 500;
@@ -1299,7 +1492,6 @@ tbody tr.critical-row {
 /* =========================
    Page
    ========================= */
-
 .page {
   min-height: 100vh;
   padding: 32px 36px 60px;
@@ -1401,27 +1593,32 @@ tbody tr.critical-row {
   position: relative;
 
   min-height: 205px;
-
   padding: 17px;
 
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(145deg,
-      rgba(20, 30, 47, 0.98),
-      rgba(13, 22, 37, 0.98));
+  background: var(--panel);
 
   border: 1px solid var(--border);
   border-radius: var(--radius);
 
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 25px var(--shadow);
 
   transition:
     transform 160ms ease,
     border-color 160ms ease,
     background 160ms ease,
     box-shadow 160ms ease;
+}
+
+.attention-card:hover {
+  transform: translateY(-2px);
+
+  background: var(--surface-hover);
+  border-color: var(--border);
+
+  box-shadow: 0 12px 32px var(--shadow);
 }
 
 

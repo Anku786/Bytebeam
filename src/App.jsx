@@ -3,11 +3,15 @@ import { AppRoutes } from './app/routes/index.jsx'
 import { useFleetData } from './app/providers/FleetDataProvider.jsx'
 import { useShell } from './app/providers/ShellProvider.jsx'
 import { useSimulator } from './app/providers/SimulatorProvider.jsx'
+import { useTheme } from './context/ThemeContext.jsx'
+
+
 function Shell() {
     const { openAttention } = useFleetData()
+    const { theme, toggleTheme } = useTheme();
     const { running, start, stop } = useSimulator()
     const { searchQuery, setSearchQuery, collapsed, setCollapsed, issueOnly, setIssueOnly } = useShell()
-    const openCount = openAttention.filter((item) => item.status === 'open').length
+    const openCount = openAttention.filter((item) => item.status === 'open').length;
     return (
         <div className="app">
             <aside className={`sidebar${collapsed ? ' collapsed' : ''}`}>
@@ -53,7 +57,7 @@ function Shell() {
                         <button className="icon-btn" title="Refresh" type="button">
                             ↻
                         </button>
-                        <button className="icon-btn" title="Theme" type="button">
+                        <button className="icon-btn" onClick={toggleTheme} title="Theme" type="button">
                             ☼
                         </button>
                         <button className="icon-btn" title="Notifications" type="button">
