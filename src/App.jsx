@@ -19,11 +19,7 @@ function Shell() {
                     </div>
                 </div>
                 <nav className="nav">
-                    <NavLink to="/" end className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}>
-                        <span className="nav-icon">⊞</span>
-                        Overview
-                    </NavLink>
-                    <NavLink to="/#live-table" className="nav-item">
+                    <NavLink to="/" className="nav-item">
                         <span className="nav-icon">▱</span>
                         Vehicles
                     </NavLink>
