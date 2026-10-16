@@ -1,0 +1,1 @@
+export { FreshnessBadge } from './FreshnessBadge.jsx'
