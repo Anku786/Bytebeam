@@ -60,9 +60,9 @@ function Shell() {
                             ♧
                         </button>
                         <div className="user">
-                            <div className="avatar">AJ</div>
+                            <div className="avatar">D</div>
                             <div>
-                                <div className="user-name">Alex Johnson</div>
+                                <div className="user-name">Dummy</div>
                                 <div className="user-role">Fleet Operations</div>
                             </div>
                             <span>⌄</span>
